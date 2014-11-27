@@ -3,7 +3,8 @@
             (eu.cassiel.tramway [auto :as a])
             [quil.core :as q]
             [clojure.core.async :as async]
-            (clojure.tools.namespace [repl :as rr])))
+            (clojure.tools.namespace [repl :as rr])
+            (clojure-exchange-2014.forms [simple-square :as simple-square])))
 
 (def system nil)
 
@@ -11,7 +12,7 @@
   "Constructs the current development system."
   []
   (alter-var-root #'system
-                  (constantly (app/create-app []
+                  (constantly (app/create-app [simple-square/simple-square]
                                               :frame-rate 30))))
 
 (defn start
